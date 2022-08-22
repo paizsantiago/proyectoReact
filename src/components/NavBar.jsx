@@ -12,8 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LogoutIcon from '@mui/icons-material/Logout';
+import CartWidget from './CartWidget';
 
-const pages = ['Peliculas', 'Sobre nosotros', 'Contacto'];
+
+const pages = ['Peliculas', 'Sobre nosotros', 'Contacto', <CartWidget/>];
 const settings = ['Perfil', 'Ajustes', 'Cerrar sesión'];
 
 
@@ -56,7 +58,7 @@ const ResponsiveAppBar = () => {
               flexGrow: 1,
             }}
           >
-            Movies +
+            inventflix
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -112,7 +114,7 @@ const ResponsiveAppBar = () => {
               textTransform: 'uppercase',
             }}
           >
-            Movies +
+            inventflix
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
