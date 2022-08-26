@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 export default function Item({item}) {
     // const [id, title, description, price, pictureUrl] = item;
-    // intente descontracturar el item pero no me dejaba
+    // intente desestructurar item pero no me dejaba
   return (
     // card de material ui para estilizar
     <div>
