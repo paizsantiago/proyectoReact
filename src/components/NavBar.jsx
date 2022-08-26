@@ -7,21 +7,20 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CartWidget from './CartWidget';
 
-
-const pages = ['Peliculas', 'Sobre nosotros', 'Contacto', <CartWidget/>];
+const pages = ['Peliculas', 'Sobre nosotros', 'Contacto',];
 const settings = ['Perfil', 'Ajustes', 'Cerrar sesión'];
 
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,8 +37,10 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+
+
   return (
-    <AppBar position="static" color="secondary">
+    <AppBar position="static" color="secondary" sx={{opacity: "90%"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -56,6 +57,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
               textTransform: 'uppercase',
               flexGrow: 1,
+
             }}
           >
             inventflix
@@ -128,7 +130,13 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display:'flex'}}>
+          
+              <Box  sx={{margin: "1rem"}}>
+                <IconButton>
+                  <CartWidget/>
+                </IconButton>
+              </Box>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <LogoutIcon/>
