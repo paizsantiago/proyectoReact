@@ -133,7 +133,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0, display:'flex'}}>
           
               <Box  sx={{margin: "1rem"}}>
-                <IconButton>
+                <IconButton sx={{color:"whitesmoke"}}>
                   <CartWidget/>
                 </IconButton>
               </Box>

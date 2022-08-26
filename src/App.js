@@ -22,8 +22,8 @@ function App() {
       <header className="App-header">
         <NavBar/>
       </header>
-      <ItemListContainer generarTitulo={generarTitulo}/>
       <ItemCount stock={stock} initial={initial} onAdd={onAdd}/>
+      <ItemListContainer generarTitulo={generarTitulo}/>
     </div>
   );
 }
