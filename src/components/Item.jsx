@@ -13,14 +13,14 @@ export default function Item({item}) {
   return (
     // card de material ui para estilizar
     <div>
-        <Card sx={{ maxWidth: 300, backgroundColor: "whitesmoke"}}>
+        <Card sx={{ maxWidth: 300, height: 550, backgroundColor: "whitesmoke"}}>
       <CardMedia
         component="img"
         height="400"
         image={item.pictureUrl}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
          {item.id}: {item.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
