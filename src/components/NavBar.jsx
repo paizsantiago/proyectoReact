@@ -13,8 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CartWidget from './CartWidget';
 
-const pages = ['Peliculas', 'Sobre nosotros', 'Contacto',];
-const settings = ['Perfil', 'Ajustes', 'Cerrar sesión'];
+const pages = ['Popular', 'Top rated', 'Upcoming',];
+const settings = ['Register', 'Sign up', 'Contact'];
 
 
 const ResponsiveAppBar = () => {

@@ -1,40 +1,31 @@
-
-import * as React from 'react';
+import React from 'react'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
+import { posterPeliculas } from '../mocks/mockData';
 
-export default function Item({item}) {
-    // const [id, title, description, price, pictureUrl] = item;
-    // intente desestructurar item pero no me dejaba
+export default function Item({movie}) {
+
+
+
   return (
-    // card de material ui para estilizar
-    <div>
-        <Card sx={{ maxWidth: 300, height: 550, backgroundColor: "whitesmoke"}}>
-      <CardMedia
-        component="img"
-        height="400"
-        image={item.pictureUrl}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-         {item.id}: {item.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {item.description}
-        </Typography>
-        <Typography variant="body2" color="secondary">
-          Price: ${item.price}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button>Learn More</Button>
-      </CardActions>
-    </Card>
-    </div>
+      <Grid item xs={2}>
+          <Card sx={{ minWidth:200, maxWidth:200, height: 400, margin:"2rem", backgroundColor:"whitesmoke"}}>
+            <CardMedia
+              component="img"
+              height="300"
+              image={posterPeliculas(movie.poster_path)}
+              sx={{objectFit:"cover"}}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="div">
+                  {movie.title}
+              </Typography>
+              </CardContent>
+          </Card>
+      </Grid>
   )
 }
 

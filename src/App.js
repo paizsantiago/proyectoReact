@@ -2,6 +2,7 @@
 import './App.css';
 import ItemCount from './components/ItemCount';
 import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer'; 
 import NavBar from './components/NavBar';
 
 function App() {
@@ -10,11 +11,11 @@ function App() {
   const initial = 1;
   let totalStock = 0;
 
-  const onAdd = (cantidad) => totalStock === 10 ? alert("Stock Agotado") : totalStock += cantidad;
+ 
       
 
   function generarTitulo (){
-    return <h1>Las mejores peliculas al mejor precio</h1>
+    return <h1>Top movies, low price</h1>
   }
 
   return (
@@ -22,8 +23,8 @@ function App() {
       <header className="App-header">
         <NavBar/>
       </header>
-      <ItemCount stock={stock} initial={initial} onAdd={onAdd}/>
       <ItemListContainer generarTitulo={generarTitulo}/>
+      <ItemDetailContainer/>
     </div>
   );
 }
