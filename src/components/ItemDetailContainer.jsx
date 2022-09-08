@@ -2,21 +2,21 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import ItemDetail from './ItemDetail'
 import {data} from '../mocks/mockData';
+import { useParams } from 'react-router-dom';
 
 export default function ItemDetailContainer() {
 
     const [movieDetail, setMovieDetail] = useState({});
     const [loading , setLoading] = useState(false);
+    const {id} = useParams();
+   console.log(id)
 
     useEffect(()=>{
         data
-        .then((res) => setMovieDetail(res.find((item)=> item.id === 278)))
+        .then((res) => setMovieDetail(res.find((item)=> item.id.toString() === id)))
         .catch((error) => console.log(error))
         .finally(()=> setLoading(false))
-    }, [])
-
-    console.log("detalle : " , movieDetail);
-    
+    }, [id])
 
   return (
     <div>

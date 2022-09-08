@@ -1,25 +1,42 @@
 
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import {data} from "../mocks/mockData"
+import {data, data2, data3, data4} from "../mocks/mockData";
+import { useParams } from "react-router-dom";
 
-export default function ItemListContainer({generarTitulo}) {
-  
+export default function ItemListContainer() {
 
+    
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
+    const {categoriaId} = useParams();
     
     useEffect (()=>{
       setLoading(true)
-      data
+      if(categoriaId === "Popular") {
+        data2
+        .then((res)=>setMovies(res))
+        .catch((error) => console.log(error))
+        .finally(()=> setLoading(false))
+      }else if(categoriaId === "Upcoming"){
+        data3.then((res)=>setMovies(res))
+        .catch((error) => console.log(error))
+        .finally(()=> setLoading(false))
+      }else if(categoriaId === "Top rated"){
+        data4.then((res)=>setMovies(res))
+        .catch((error) => console.log(error))
+        .finally(()=> setLoading(false))
+      }
+      else{
+        data
       .then((res)=>setMovies(res))
       .catch((error) => console.log(error))
       .finally(()=> setLoading(false))
-    }, [])
+      }
+    }, [categoriaId])
 
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>{generarTitulo()}</h1>
         {loading ? <h2 style={{textAlign: "center", fontFamily:"sans-serif"}}>Cargando...</h2> : <ItemList movies={movies}/>}
     </div>
 

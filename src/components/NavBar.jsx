@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
 const pages = ['Popular', 'Top rated', 'Upcoming',];
 const settings = ['Register', 'Sign up', 'Contact'];
@@ -60,7 +61,7 @@ const ResponsiveAppBar = () => {
 
             }}
           >
-            inventflix
+            <Link to={"/"}>inventflix</Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -112,11 +113,10 @@ const ResponsiveAppBar = () => {
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
-              textDecoration: 'none',
               textTransform: 'uppercase',
             }}
           >
-            inventflix
+            <Link to={"/"}>inventflix</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -125,7 +125,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'flex', margin: "1rem", fontFamily: 'roboto',}}
               >
-                {page}
+                <Link to={`/categoria/${page}`}>{page}</Link>
               </Button>
             ))}
           </Box>
