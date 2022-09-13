@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import ItemDetail from './ItemDetail'
-import {data} from '../mocks/mockData';
+import {data, data2, data3, data4} from '../mocks/mockData';
 import { useParams } from 'react-router-dom';
 
 export default function ItemDetailContainer() {
@@ -9,11 +9,42 @@ export default function ItemDetailContainer() {
     const [movieDetail, setMovieDetail] = useState({});
     const [loading , setLoading] = useState(false);
     const {id} = useParams();
-   console.log(id)
 
-    useEffect(()=>{
+
+    useEffect(()=>{ //recibe un id y los compara en los distintos fetch para encontrar la coincidencia
         data
-        .then((res) => setMovieDetail(res.find((item)=> item.id.toString() === id)))
+        .then((res) => {
+          if (res.find((item)=> item.id.toString() === id)) {
+            setMovieDetail(res.find((item)=> item.id.toString() === id));
+          }else {
+            data2
+            .then((res) => {
+              if (res.find((item)=> item.id.toString() === id)) {
+                setMovieDetail(res.find((item)=> item.id.toString() === id));
+              }else {
+                data3
+                .then((res)=>{
+                  if (res.find((item)=> item.id.toString() === id)) {
+                    setMovieDetail(res.find((item)=> item.id.toString() === id));
+                  }else {
+                    data4
+                    .then((res) => {
+                      if (res.find((item)=> item.id.toString() === id)) {
+                        setMovieDetail(res.find((item)=> item.id.toString() === id));
+                      }
+                    })
+                    .catch((error) => console.log(error))
+                    .finally(()=> setLoading(false))
+                  }
+                })
+                .catch((error) => console.log(error))
+                .finally(()=> setLoading(false))
+              }
+            })
+            .catch((error) => console.log(error))
+            .finally(()=> setLoading(false))
+          }
+        })
         .catch((error) => console.log(error))
         .finally(()=> setLoading(false))
     }, [id])
