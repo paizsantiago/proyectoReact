@@ -10,27 +10,30 @@ export default function ItemDetailContainer() {
     const [loading , setLoading] = useState(false);
     const {id} = useParams();
 
+    const setMovie = (res) =>{
+      setMovieDetail(res.find((item)=> item.id.toString() === id));
+    }
 
     useEffect(()=>{ //recibe un id y los compara en los distintos fetch para encontrar la coincidencia
         data
         .then((res) => {
           if (res.find((item)=> item.id.toString() === id)) {
-            setMovieDetail(res.find((item)=> item.id.toString() === id));
+            setMovie(res);
           }else {
             data2
             .then((res) => {
               if (res.find((item)=> item.id.toString() === id)) {
-                setMovieDetail(res.find((item)=> item.id.toString() === id));
+                  setMovie(res);
               }else {
                 data3
                 .then((res)=>{
                   if (res.find((item)=> item.id.toString() === id)) {
-                    setMovieDetail(res.find((item)=> item.id.toString() === id));
+                      setMovie(res);
                   }else {
                     data4
                     .then((res) => {
                       if (res.find((item)=> item.id.toString() === id)) {
-                        setMovieDetail(res.find((item)=> item.id.toString() === id));
+                          setMovie(res);
                       }
                     })
                     .catch((error) => console.log(error))

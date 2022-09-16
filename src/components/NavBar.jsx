@@ -41,7 +41,7 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar position="static" color="secondary" sx={{opacity: "90%"}}>
+    <AppBar position="static" sx={{opacity: "90%"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -52,16 +52,13 @@ const ResponsiveAppBar = () => {
             sx={{                                                                                             
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'roboto',
-              fontWeight: 700,
+              fontWeight: 900,
               letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
               textTransform: 'uppercase',
               flexGrow: 1,
-
             }}
           >
-            <Link to={"/"}>inventflix</Link>
+            <Link to={"/"} className="prueba1">inventflix</Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -95,7 +92,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"><Link to={`/categoria/${page}`} className="prueba">{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -110,13 +107,13 @@ const ResponsiveAppBar = () => {
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'roboto',
-              fontWeight: 700,
+              fontWeight: 900,
               letterSpacing: '.3rem',
               color: 'inherit',
               textTransform: 'uppercase',
             }}
           >
-            <Link to={"/"}>inventflix</Link>
+            <Link to={"/"} className="prueba1">invflx</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -125,7 +122,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'flex', margin: "1rem", fontFamily: 'roboto',}}
               >
-                <Link to={`/categoria/${page}`}>{page}</Link>
+                <Link to={`/categoria/${page}`} className="prueba">{page}</Link>
               </Button>
             ))}
           </Box>

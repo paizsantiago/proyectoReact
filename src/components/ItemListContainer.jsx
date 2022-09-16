@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import {data, data2, data3, data4} from "../mocks/mockData";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader";
 
 export default function ItemListContainer() {
 
@@ -13,50 +14,32 @@ export default function ItemListContainer() {
     
     useEffect (()=>{
       setLoading(true)
-      // if(categoriaId === "Popular") {
-      //   data2
-      //   .then((res)=>setMovies(res))
-      //   .catch((error) => console.log(error))
-      //   .finally(()=> setLoading(false))
-      // }else if(categoriaId === "Upcoming"){
-      //   data3.then((res)=>setMovies(res))
-      //   .catch((error) => console.log(error))
-      //   .finally(()=> setLoading(false))
-      // }else if(categoriaId === "Top rated"){
-      //   data4.then((res)=>setMovies(res))
-      //   .catch((error) => console.log(error))
-      //   .finally(()=> setLoading(false))
-      // }
-      // else{
-      //   data
-      // .then((res)=>setMovies(res))
-      // .catch((error) => console.log(error))
-      // .finally(()=> setLoading(false))
-      // }
-      switch (categoriaId) {
-        case "Popular":
-          data2
-          .then((res)=>setMovies(res))
-          .catch((error) => console.log(error))
-          .finally(()=> setLoading(false))
-          break;
-        case "Upcoming" :
-          data3.then((res)=>setMovies(res))
-          .catch((error) => console.log(error))
-          .finally(()=> setLoading(false))
-          break;
-        case "Top rated":
-          data4.then((res)=>setMovies(res))
-          .catch((error) => console.log(error))
-          .finally(()=> setLoading(false))
-          break;
-        default:
-          data
-          .then((res)=>setMovies(res))
-          .catch((error) => console.log(error))
-          .finally(()=> setLoading(false))
-          break;
-      }
+      setTimeout(()=>{
+        switch (categoriaId) {
+          case "Popular":
+            data2
+            .then((res)=>setMovies(res))
+            .catch((error) => console.log(error))
+            .finally(()=> setLoading(false))
+            break;
+          case "Upcoming" :
+            data3.then((res)=>setMovies(res))
+            .catch((error) => console.log(error))
+            .finally(()=> setLoading(false))
+            break;
+          case "Top rated":
+            data4.then((res)=>setMovies(res))
+            .catch((error) => console.log(error))
+            .finally(()=> setLoading(false))
+            break;
+          default:
+            data
+            .then((res)=>setMovies(res))
+            .catch((error) => console.log(error))
+            .finally(()=> setLoading(false))
+            break;
+        }
+      }, 1500)
     }, [categoriaId])
 
   return (
@@ -65,7 +48,7 @@ export default function ItemListContainer() {
       }}>
           {categoriaId ? <h1 style={{color: "whitesmoke", fontSize:"5rem"}}>{categoriaId}</h1> : <h1 style={{color: "whitesmoke", fontSize:"5rem"}}>Now Playing</h1>}
         </div>
-        {loading ? <h2 style={{textAlign: "center", fontFamily:"sans-serif"}}>Cargando...</h2> : <ItemList movies={movies}/>}
+        {loading ? <Loader/> : <ItemList movies={movies}/>}
     </div>
 
   )

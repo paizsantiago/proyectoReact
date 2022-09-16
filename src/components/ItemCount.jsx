@@ -1,26 +1,26 @@
-import { Box } from "@mui/material";
+import { Alert, Box, Button } from "@mui/material";
 
 export default function ItemCount({stock, initial, onAdd, contador, setContador}) {
     
   return (
     <Box sx={{margin: "2rem"}}>
         <div style={{display:"flex", gap:"2rem", marginBottom: "1rem"}}>
-        <button onClick={()=>{
+        <Button variant="contained" onClick={()=>{
             if(contador > initial){
                 setContador(contador-1);
             }
-        }}>-</button>
+        }}>-</Button>
         <h3>{contador}</h3>
-        <button onClick={()=>{
+        <Button variant="contained" onClick={()=>{
             if(contador < stock){
                 setContador(contador+1);
             }
-        }}>+</button>
+        }}>+</Button>
         </div>
-        <button onClick={() =>{
-            onAdd(contador);
+        <Button variant="contained" onClick={() =>{
+            onAdd();
             setContador(initial);
-        }}>Agregar al carrito</button>
+        }}>Agregar al carrito</Button>
     </Box>
   )
 }
