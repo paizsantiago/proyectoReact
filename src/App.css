@@ -1,12 +1,48 @@
 
-.prueba{
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
+.card:hover{
+  box-shadow: 0 0 .3rem #08081d;
 }
 
-.prueba1{
+.containerCart{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  flex-direction: column;
+}
+
+
+
+.cart h1{
+  font-size: 8rem;
+}
+
+.cart h2{
+  font-size: 2.5rem;
+}
+
+.botonesNav{
   color: whitesmoke;
   text-decoration: none;
-  font-size: 1.5rem;
+  text-decoration: none;
+  font-size: .95rem;
+}
+
+.titlesPages{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100Vh;
+  background-image: linear-gradient(to top , black, rgba(0, 0, 0, 0.699)),url("https://i.postimg.cc/65qsffHY/20493446.jpg");
+  box-shadow: 0 0 .2rem black;
+  color: rgb(107, 93, 93);
+  font-size: 5rem;
+}
+
+.titlesPages h1{
+  font-size: 6rem;
+  color: whitesmoke;
+  padding: 2rem;
 }

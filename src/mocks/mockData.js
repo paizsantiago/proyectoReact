@@ -4,6 +4,7 @@ const url2 = "https://api.themoviedb.org/3/movie/popular?api_key=e0473f36f945619
 const url3 = "https://api.themoviedb.org/3/movie/upcoming?api_key=e0473f36f945619d823839b782eeeef5&language=en-US&page=1";
 const url4 = "https://api.themoviedb.org/3/movie/top_rated?api_key=e0473f36f945619d823839b782eeeef5&language=en-US&page=1"
 
+
  export const data = new Promise ((resolve, reject)=>{
     
     let condition = true;

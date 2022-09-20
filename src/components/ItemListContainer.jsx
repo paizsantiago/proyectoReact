@@ -4,6 +4,10 @@ import ItemList from "./ItemList";
 import {data, data2, data3, data4} from "../mocks/mockData";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
+import { Box } from "@mui/system";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SouthIcon from '@mui/icons-material/South';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function ItemListContainer() {
 
@@ -43,13 +47,13 @@ export default function ItemListContainer() {
     }, [categoriaId])
 
   return (
-    <div>
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "30rem", backgroundImage: "url(https://i.postimg.cc/gjCLQHJg/57389.jpg)", backgroundSize: "cover",
-      }}>
-          {categoriaId ? <h1 style={{color: "whitesmoke", fontSize:"5rem"}}>{categoriaId}</h1> : <h1 style={{color: "whitesmoke", fontSize:"5rem"}}>Now Playing</h1>}
-        </div>
-        {loading ? <Loader/> : <ItemList movies={movies}/>}
-    </div>
+      <Box className="prueba">
+        <Box className="titlesPages">
+          {categoriaId ? <h1>{categoriaId}</h1> : <h1>Now Playing</h1>}
+          <ArrowDownwardIcon fontSize="inherit"/>
+        </Box>
+          {loading ? <Loader/> : <ItemList movies={movies}/>}
+      </Box>
 
   )
 }

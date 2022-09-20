@@ -12,7 +12,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CartWidget from './CartWidget';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const pages = ['Popular', 'Top rated', 'Upcoming',];
 const settings = ['Register', 'Sign up', 'Contact'];
@@ -21,6 +22,8 @@ const settings = ['Register', 'Sign up', 'Contact'];
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const navigate = useNavigate();
   
 
   const handleOpenNavMenu = (event) => {
@@ -41,24 +44,22 @@ const ResponsiveAppBar = () => {
 
 
   return (
-    <AppBar position="static" sx={{opacity: "90%"}}>
+    <AppBar position="fixed" sx={{opacity: "90%", backdropFilter: "blur(10px)"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{                                                                                             
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'roboto',
               fontWeight: 900,
-              letterSpacing: '.1rem',
               textTransform: 'uppercase',
               flexGrow: 1,
+              padding: 0,
             }}
           >
-            <Link to={"/"} className="prueba1">inventflix</Link>
+            <Button onClick={()=>navigate('./')} sx={{color: "red", fontSize: "1.3rem", letterSpacing: ".25rem", fontWeight: "bold"}}>inventflix</Button>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -92,7 +93,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><Link to={`/categoria/${page}`} className="prueba">{page}</Link></Typography>
+                  <Typography textAlign="center"><Link to={`/categoria/${page}`} className="botonesNav">{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -100,29 +101,28 @@ const ResponsiveAppBar = () => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
-              mr: 2,
+              mr: 0,
               display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
+              flexGrow: .7,
               fontFamily: 'roboto',
               fontWeight: 900,
               letterSpacing: '.3rem',
               color: 'inherit',
               textTransform: 'uppercase',
+              textAlign: "center",
             }}
           >
-            <Link to={"/"} className="prueba1">invflx</Link>
+            <Button onClick={()=>navigate('./')} sx={{color: "red", fontSize: "1.3rem", letterSpacing: ".25rem", margin: 0}}>invtflx</Button>
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1.1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'flex', margin: "1rem", fontFamily: 'roboto',}}
               >
-                <Link to={`/categoria/${page}`} className="prueba">{page}</Link>
+                <Link to={`/categoria/${page}`} className="botonesNav">{page}</Link>
               </Button>
             ))}
           </Box>
@@ -130,12 +130,10 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0, display:'flex'}}>
           
               <Box  sx={{margin: "1rem"}}>
-                <IconButton sx={{color:"whitesmoke"}}>
-                  <CartWidget/>
-                </IconButton>
+                  <Button sx={{color:"whitesmoke"}} onClick={()=>navigate('./cart')}><CartWidget/></Button>
               </Box>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: "whitesmoke"}}>
                 <LogoutIcon/>
               </IconButton>
             </Tooltip>

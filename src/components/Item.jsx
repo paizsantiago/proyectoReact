@@ -16,7 +16,7 @@ export default function Item({movie}) {
 
   return (
       <Grid item sx={{margin: 1}}>
-          <Card sx={{ minWidth:220, maxWidth:220, height:450, margin:"2rem", backgroundColor:"whitesmoke"}}className='card'>
+          <Card sx={{ minWidth:220, maxWidth:220, height:450, margin:"2rem", backgroundColor:"whitesmoke"}}className="card">
             <CardMedia
               component="img"
               height="310"
@@ -28,7 +28,7 @@ export default function Item({movie}) {
                 <Typography gutterBottom variant="h7" component="div" style={{fontWeight: "bold"}}>
                     {movie.title}
                 </Typography>
-                <Button variant="outlined" size="small" onClick={()=>navigate(`/detail/${id}`)}>More details</Button>
+                <Button variant="contained" size="small" onClick={()=>navigate(`/detail/${id}`)}>More details</Button>
               </Box>
             </CardContent>
           </Card>
