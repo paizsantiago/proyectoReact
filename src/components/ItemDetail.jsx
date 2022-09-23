@@ -1,23 +1,22 @@
 import React from 'react'
 import ItemCount from './ItemCount'
-import { posterPeliculas } from '../mocks/mockData';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import {addDoc, collection, getFirestore} from 'firebase/firestore';
 
 export default function ItemDetail({movieDetail}) {
 
   let [contador, setContador] = useState(1);
   let [compraLlena, setCompraLlena] = useState(false);
-  movieDetail = {...movieDetail, price: 15, stock: 10};
-  movieDetail.img =  `${posterPeliculas(movieDetail.poster_path)}`;
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const {addItem} = useContext(CartContext);
   
-  const {title, overview, release_date, vote_average, poster_path, price, stock, img, id} = movieDetail;
-
+  const {title, overview, release_date, vote_average, price, stock, img, id} = movieDetail;
+  console.log(movieDetail);
 
   const onAdd = () => {
     let purchase = {
@@ -31,11 +30,17 @@ export default function ItemDetail({movieDetail}) {
     addItem(purchase);
   }
 
+  useEffect(()=>{
+      setTimeout(() => {
+          setLoading(false)
+      }, 1500);
+  },[])
+
   return (
     <Box sx={{display: "flex", justifyContent:"center", alignItems: "center", margin: "7rem 0 0 0rem", flexDirection: "column"}}>
       <Box sx={{display: "flex", justifyContent:"space-between", alignItems: "center"}}>
         <Box sx={{width: "30%", display: "flex", justifyContent:"center", alignItems: "center"}}>
-          <img src={posterPeliculas(poster_path)} alt="" />
+          <img src={img} alt="" />
         </Box>
         <Box sx={{width: "70%"}}>
           <h2>{title}</h2>

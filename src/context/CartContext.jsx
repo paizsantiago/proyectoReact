@@ -25,7 +25,6 @@ export const CartProvider = ({children}) => {
     }       
     
     const removeItem = (itemId, quantity) =>{
-        /* setCart(cart.filter((item) => item.id !== itemId)); */
             setCart(cart.filter((item) => item.id !== itemId))
             setContadorCarrito(contadorCarrito - quantity);
         

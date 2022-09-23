@@ -8,7 +8,7 @@ import ItemCart from './ItemCart';
 export default function Cart() {
   const {cart, clear} = useContext(CartContext);
   const navigate = useNavigate();
-  
+
   return (
     <Box>
       {!cart.length ? 

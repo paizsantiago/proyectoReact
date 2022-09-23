@@ -9,6 +9,7 @@ import {CartProvider} from './context/CartContext';
 import { ThemeProvider } from '@mui/material';
 import {theme} from './themeMaterial/themeConfig';
 
+
 function App() {
 
   return (
@@ -19,7 +20,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<ItemListContainer/>}/>
                 <Route path='/categoria/:categoriaId' element={<ItemListContainer/>}/>
-                <Route path='/detail/:id' element={<ItemDetailContainer/>}/>
+                <Route path='/detail/:categoriaId/:id' element={<ItemDetailContainer/>}/>
                 <Route path='/cart' element={<Cart/>}/>
               </Routes>
           </BrowserRouter>

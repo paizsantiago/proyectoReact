@@ -59,7 +59,7 @@ const ResponsiveAppBar = () => {
               padding: 0,
             }}
           >
-            <Button onClick={()=>navigate('./')} sx={{color: "red", fontSize: "1.3rem", letterSpacing: ".25rem", fontWeight: "bold"}}>inventflix</Button>
+            <Button onClick={()=>navigate('./categoria/Now Playing')} sx={{color: "red", fontSize: "1.3rem", letterSpacing: ".25rem", fontWeight: "bold"}}>inventflix</Button>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -113,7 +113,7 @@ const ResponsiveAppBar = () => {
               textAlign: "center",
             }}
           >
-            <Button onClick={()=>navigate('./')} sx={{color: "red", fontSize: "1.3rem", letterSpacing: ".25rem", margin: 0}}>invtflx</Button>
+            <Button onClick={()=>navigate('./categoria/Now Playing')} sx={{color: "red", fontSize: "1.3rem", letterSpacing: ".25rem", margin: 0}}>invtflx</Button>
           </Typography>
           <Box sx={{ flexGrow: 1.1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

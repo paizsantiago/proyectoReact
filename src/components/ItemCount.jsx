@@ -1,4 +1,5 @@
-import { Alert, Box, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
+
 
 export default function ItemCount({stock, initial, onAdd, contador, setContador}) {
     

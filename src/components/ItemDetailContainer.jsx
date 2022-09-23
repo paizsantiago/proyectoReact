@@ -1,60 +1,65 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import ItemDetail from './ItemDetail'
-import {data, data2, data3, data4} from '../mocks/mockData';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc, getFirestore} from 'firebase/firestore';
+import Loader from './Loader';
 
 export default function ItemDetailContainer() {
 
     const [movieDetail, setMovieDetail] = useState({});
     const [loading , setLoading] = useState(false);
     const {id} = useParams();
-
-    const setMovie = (res) =>{
-      setMovieDetail(res.find((item)=> item.id.toString() === id));
-    }
+    let {categoriaId} = useParams();
 
     useEffect(()=>{ //recibe un id y los compara en los distintos fetch para encontrar la coincidencia
-        data
-        .then((res) => {
-          if (res.find((item)=> item.id.toString() === id)) {
-            setMovie(res);
-          }else {
-            data2
-            .then((res) => {
-              if (res.find((item)=> item.id.toString() === id)) {
-                  setMovie(res);
-              }else {
-                data3
-                .then((res)=>{
-                  if (res.find((item)=> item.id.toString() === id)) {
-                      setMovie(res);
-                  }else {
-                    data4
-                    .then((res) => {
-                      if (res.find((item)=> item.id.toString() === id)) {
-                          setMovie(res);
-                      }
-                    })
-                    .catch((error) => console.log(error))
-                    .finally(()=> setLoading(false))
-                  }
-                })
-                .catch((error) => console.log(error))
-                .finally(()=> setLoading(false))
-              }
-            })
-            .catch((error) => console.log(error))
-            .finally(()=> setLoading(false))
+        
+        setTimeout(()=>{
+          const db = getFirestore();
+          console.log(id)
+          switch (categoriaId) {
+            case "Popular":
+              let movieRef = doc(db, "moviesPopular", id);
+              getDoc(movieRef).then((res)=>{           
+                const newObj = {...res.data(), id: res.id};
+                setMovieDetail(newObj);
+                setLoading(false);
+              });
+              break;
+            case "Top rated":
+              let movieRef2 = doc(db, "moviesTopRated", id);
+              getDoc(movieRef2).then((res)=>{           
+                const newObj = {...res.data(), id: res.id};
+                setMovieDetail(newObj);
+                setLoading(false);
+              });
+              break;
+            case "Upcoming":
+                let movieRef3 = doc(db, "moviesUpcoming", id);
+                getDoc(movieRef3).then((res)=>{           
+                  const newObj = {...res.data(), id: res.id};
+                  setMovieDetail(newObj);
+                  setLoading(false);
+                });
+                break; 
+            case "Now Playing":
+              let movieRef4 = doc(db, "moviesNowPlaying", id);
+                getDoc(movieRef4).then((res)=>{           
+                  const newObj = {...res.data(), id: res.id};
+                  setMovieDetail(newObj);
+                  setLoading(false);
+                });
+                break; 
+            default:
+              break;
           }
-        })
-        .catch((error) => console.log(error))
-        .finally(()=> setLoading(false))
+        }, 1500)
+        
     }, [id])
 
   return (
     <div>
-        {loading ? <h2 style={{textAlign:"center", fontFamily:"sans-serif"}}>Cargando...</h2> : <ItemDetail movieDetail={movieDetail}/>}
+        {loading ? <Loader/>: <ItemDetail movieDetail={movieDetail}/>}
     </div>
   )
 }
