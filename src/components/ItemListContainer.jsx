@@ -43,7 +43,6 @@ export default function ItemListContainer() {
           });
 
           setMovies(cleanMovies);
-          console.log(cleanMovies);
           setLoading(false);
         });
       }, 1500)

@@ -20,7 +20,7 @@ export default function Cart() {
       <Box>
         {cart.map((itemCart)=> <ItemCart itemCart={itemCart}/>)}
         <Button onClick={()=>clear()}>Clear Cart</Button>
-        <Button>Finish my purchase</Button>
+        <Button onClick={()=>navigate('/checkout')}>Finish my purchase</Button>
       </Box>
       }
     </Box>

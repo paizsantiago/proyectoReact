@@ -1,3 +1,7 @@
+*{
+  user-select: none;
+}
+
 
 .card:hover{
   box-shadow: 0 0 .3rem #08081d;
@@ -12,7 +16,113 @@
   flex-direction: column;
 }
 
+.containerDetail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: whitesmoke;
+}
 
+.imgBack{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 15%;
+}
+
+.detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.imgDetail{
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgDetail img{
+  box-shadow: 0 0 1.2rem #08081d;
+  height: 25rem;
+  border-radius: .2rem;
+}
+
+.contador{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 1;
+}
+
+.botonAgregar{
+  width: 100%;
+}
+
+.formularioCheckout{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 50vh;
+  color: #e3e0da;
+  text-decoration: none;
+  padding: 2rem;
+}
+
+input{
+  display: block;
+  margin: 2rem 0 2rem 0;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid rgb(133, 13, 13);
+  transition: .6s ease;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+input:hover {
+  border-bottom: 0.1rem solid rgb(219, 133, 133); }
+
+label{
+  color: #151542;
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+
+.infoDetail{
+  width: 50%;
+  padding: 2rem;
+  line-height: 1.7rem;
+  z-index: 1;
+}
+
+.infoDetail h2{
+  font-size: 3rem;
+  color: rgb(160, 4, 4);
+}
+
+.infoDetail h3, .infoDetail h4{
+  font-size: 1.3rem;
+  color: rgb(27, 26, 26);
+}
+
+.infoDetail h3 span{
+  color: #151542;
+}
 
 .cart h1{
   font-size: 8rem;

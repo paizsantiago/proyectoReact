@@ -2,10 +2,11 @@ import React from 'react'
 import ItemCount from './ItemCount'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Divider } from '@mui/material';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import {addDoc, collection, getFirestore} from 'firebase/firestore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ItemDetail({movieDetail}) {
 
@@ -15,8 +16,7 @@ export default function ItemDetail({movieDetail}) {
   const navigate = useNavigate();
   const {addItem} = useContext(CartContext);
   
-  const {title, overview, release_date, vote_average, price, stock, img, id} = movieDetail;
-  console.log(movieDetail);
+  const {title, overview, vote_average, price, stock, img, id} = movieDetail;
 
   const onAdd = () => {
     let purchase = {
@@ -28,6 +28,15 @@ export default function ItemDetail({movieDetail}) {
     }
     setCompraLlena(true);
     addItem(purchase);
+    toast.success('Succes, added to cart 👍​', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
   }
 
   useEffect(()=>{
@@ -37,23 +46,25 @@ export default function ItemDetail({movieDetail}) {
   },[])
 
   return (
-    <Box sx={{display: "flex", justifyContent:"center", alignItems: "center", margin: "7rem 0 0 0rem", flexDirection: "column"}}>
-      <Box sx={{display: "flex", justifyContent:"space-between", alignItems: "center"}}>
-        <Box sx={{width: "30%", display: "flex", justifyContent:"center", alignItems: "center"}}>
+    <Box className='containerDetail'>
+      <img className='imgBack' src={img}/>
+      <Box className='detail'>
+        <Box className='imgDetail'>
           <img src={img} alt="" />
         </Box>
-        <Box sx={{width: "70%"}}>
+        <Box className='infoDetail'>
           <h2>{title}</h2>
-          <h4>Release date: {release_date}</h4>
-          <h3>Description: {overview}</h3>
-          <h5>Vote average: {vote_average}</h5>
-          <h5>Price: ${price}</h5>
+          <Divider/>
+          <h3><span>Description: </span>{overview}</h3>
+          <h4>Vote average: {vote_average}</h4>
+          <h4>Price: ${price}</h4>
         </Box>
       </Box>
-      {compraLlena ? <Box>
+      {compraLlena ? <Box className='contador'>
         <Button variant="outlined"onClick={()=>navigate('/cart')}>Ir al carrito</Button> 
         <Button variant="outlined"onClick={()=>navigate('/')}>Seguir comprando</Button> 
       </Box>: <ItemCount stock={stock} initial={1} onAdd={onAdd} contador={contador} setContador={setContador}/>}
+      <ToastContainer />
     </Box>
   )
 }

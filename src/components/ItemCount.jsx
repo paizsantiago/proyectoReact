@@ -4,8 +4,8 @@ import { Box, Button } from "@mui/material";
 export default function ItemCount({stock, initial, onAdd, contador, setContador}) {
     
   return (
-    <Box sx={{margin: "2rem"}}>
-        <div style={{display:"flex", gap:"2rem", marginBottom: "1rem"}}>
+    <Box>
+        <div className="contador">
         <Button variant="contained" onClick={()=>{
             if(contador > initial){
                 setContador(contador-1);
@@ -18,7 +18,7 @@ export default function ItemCount({stock, initial, onAdd, contador, setContador}
             }
         }}>+</Button>
         </div>
-        <Button variant="contained" onClick={() =>{
+        <Button className="botonAgregar" variant="contained" onClick={() =>{
             onAdd();
             setContador(initial);
         }}>Agregar al carrito</Button>

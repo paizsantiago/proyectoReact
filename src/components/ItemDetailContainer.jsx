@@ -16,7 +16,6 @@ export default function ItemDetailContainer() {
         
         setTimeout(()=>{
           const db = getFirestore();
-          console.log(id)
           switch (categoriaId) {
             case "Popular":
               let movieRef = doc(db, "moviesPopular", id);
@@ -49,13 +48,21 @@ export default function ItemDetailContainer() {
                   setMovieDetail(newObj);
                   setLoading(false);
                 });
-                break; 
+                break;
+            case "undefined":
+              let movieRef5 = doc(db, "moviesNowPlaying", id);
+              getDoc(movieRef5).then((res)=>{           
+                const newObj = {...res.data(), id: res.id};
+                setMovieDetail(newObj);
+                setLoading(false);
+              });
+              break;
             default:
               break;
           }
         }, 1500)
         
-    }, [id])
+    }, [categoriaId, id])
 
   return (
     <div>
