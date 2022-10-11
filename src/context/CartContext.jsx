@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 const moviesLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
-const contadorStorage = localStorage.getItem('contador' || "0");
+const contadorStorage = localStorage.getItem('contador') || 0;
 
 
 export const CartContext = createContext();
