@@ -67,7 +67,12 @@ Genera los pop-ups a la hora de agregar un item al carrito o no completar el for
 
 Spinners de carga cuando se hace el llamado a firebase.
 
+## Navegacion
 
+Busqueda y compra de productos:
+
+
+![GIF](https://user-images.githubusercontent.com/90289434/195172520-370f0976-4cc0-465a-b670-c3cd2a52b5a6.gif)
 
 
 
