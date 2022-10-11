@@ -81,6 +81,7 @@ https://user-images.githubusercontent.com/90289434/195169959-e5b35f3d-9067-4795-
 
 
 
+![navegacion](https://user-images.githubusercontent.com/90289434/195170564-be050711-293e-4589-b44b-d9cc1c438526.gif)
 
 
 
