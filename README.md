@@ -69,7 +69,11 @@ Spinners de carga cuando se hace el llamado a firebase.
 
 ## Navegacion
 
-![Navegacion 1: ](https://user-images.githubusercontent.com/90289434/195169092-0897b6fb-4cae-49ae-a58f-4111e61be268.gif)
+
+
+https://user-images.githubusercontent.com/90289434/195169423-d041943d-81dc-49bd-a04b-c0334cfb0f94.mp4
+
+
 
 
 
