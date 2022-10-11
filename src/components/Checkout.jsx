@@ -21,9 +21,9 @@ export default function Checkout() {
         })
     }
 
-    const finalizarCompra = (e) =>{
+    const finalizarCompra = (e) =>{ // sube las ordenes a firestore
         e.preventDefault();
-        if(Object.values(buyer).length != 4){
+        if(Object.values(buyer).length !== 4){
             toast.error('Please, complete the form', {
                 position: "top-right",
                 autoClose: 2000,
@@ -49,7 +49,6 @@ export default function Checkout() {
 
     }
 
-    console.log(orderId);
   return (
     <Box className='formularioCheckout'>
         {!orderId ?
@@ -62,17 +61,17 @@ export default function Checkout() {
                 <label for="nombre">Your last name</label>
                 <input type="text" placeholder='Last name' name='lastName' onChange={infoBuyer}/>
                 <label for="nombre">Your phone</label>
-                <input type="number" placeholder='Tel' name='phone' onChange={infoBuyer}/>
+                <input type="number" placeholder='Tel: 32131231' name='phone' onChange={infoBuyer}/>
                 <label for="nombre">Your email</label>
                 <input type="email" placeholder='example@gmail.com' name='email' onChange={infoBuyer}/>
-                <Button type='submit'>Finish</Button>
+                <Button type='submit' variant="contained">Finish</Button>
             </form>
         </Box>
         :
-        <Box>
-            <h2>Thanks you!</h2>
+        <Box className='postCheckout'>
+            <h2>Thanks you! :)</h2>
             <h3>Your order ID is: {orderId}</h3>
-            <Button onClick={()=>navigate('/')}>Back</Button>
+            <Button onClick={()=>navigate('/')} variant="contained">Back</Button>
         </Box>}
         <ToastContainer />
     </Box>

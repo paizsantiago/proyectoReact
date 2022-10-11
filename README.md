@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Proyecto Inventflix
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -45,26 +45,29 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Descripción
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Inventflix es un proyecto e-commerce realizado en `ReactJS` de venta de peliculas. Las mismas son sacadas de la api [TMB](https://www.themoviedb.org/).
 
-### Analyzing the Bundle Size
+El proyecto cuenta con `4` secciones de peliculas, carrito y formulario de confirmacion de compra asi como tambien adaptacion a todos los dispositivos.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+La información es almacenada en `firebase` (tanto las peliculas, como las ordenes de compra.)
 
-### Making a Progressive Web App
+## Librerias utilizadas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[Material-UI](https://mui.com/)
 
-### Advanced Configuration
+Tomé la decisión de utilizar Material-UI ya que queria darle un aspecto más profesional y tenia como meta personal estilizar todo el proyecto utilizando la misma.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[React-Toastify](https://www.npmjs.com/package/react-toastify)
 
-### Deployment
+Genera los pop-ups a la hora de agregar un item al carrito o no completar el formulario.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[React-Spinners](https://www.davidhu.io/react-spinners/)
 
-### `npm run build` fails to minify
+Spinners de carga cuando se hace el llamado a firebase.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+

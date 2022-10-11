@@ -120,7 +120,7 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'flex', margin: "1rem", fontFamily: 'roboto',}}
+                sx={{ my: 2, color: "black", display: 'flex', margin: "1rem", fontFamily: 'roboto',}}
               >
                 <Link to={`/categoria/${page}`} className="botonesNav">{page}</Link>
               </Button>

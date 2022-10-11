@@ -13,8 +13,6 @@ export default function ItemDetailContainer() {
     let {categoriaId} = useParams();
 
     useEffect(()=>{ //recibe un id y los compara en los distintos fetch para encontrar la coincidencia
-        
-        setTimeout(()=>{
           const db = getFirestore();
           switch (categoriaId) {
             case "Popular":
@@ -59,9 +57,7 @@ export default function ItemDetailContainer() {
               break;
             default:
               break;
-          }
-        }, 1500)
-        
+          }        
     }, [categoriaId, id])
 
   return (

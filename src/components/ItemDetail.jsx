@@ -7,6 +7,9 @@ import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import Loader from './Loader';
+
 
 export default function ItemDetail({movieDetail}) {
 
@@ -14,29 +17,35 @@ export default function ItemDetail({movieDetail}) {
   let [compraLlena, setCompraLlena] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const {addItem} = useContext(CartContext);
+  const {addItem, isInCart} = useContext(CartContext);
   
-  const {title, overview, vote_average, price, stock, img, id} = movieDetail;
+  const {title, overview, vote_average, price, img, id} = movieDetail;
+  let {stock} = movieDetail;
 
-  const onAdd = () => {
+  const onAdd = () => { // agrega los items al carrito
     let purchase = {
       id,
+      stock,
       title, 
       price,
       img,
       quantity:contador
     }
     setCompraLlena(true);
-    addItem(purchase);
-    toast.success('Succes, added to cart 👍​', {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
+    if (isInCart(id)) {
+      alert("no hay stock");
+    }else{
+      addItem(purchase);
+      toast.success('Success, added to cart 👍​', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }
   }
 
   useEffect(()=>{
@@ -47,8 +56,7 @@ export default function ItemDetail({movieDetail}) {
 
   return (
     <Box className='containerDetail'>
-      <img className='imgBack' src={img}/>
-      <Box className='detail'>
+      {!loading ? <Box className='detail'>
         <Box className='imgDetail'>
           <img src={img} alt="" />
         </Box>
@@ -56,14 +64,19 @@ export default function ItemDetail({movieDetail}) {
           <h2>{title}</h2>
           <Divider/>
           <h3><span>Description: </span>{overview}</h3>
+          <Box className='voteAverage'>
           <h4>Vote average: {vote_average}</h4>
+          <ThumbUpIcon className='voteAverageIcon'/>
+          </Box>
           <h4>Price: ${price}</h4>
-        </Box>
-      </Box>
-      {compraLlena ? <Box className='contador'>
+          {compraLlena ? <Box className='contador'>
         <Button variant="outlined"onClick={()=>navigate('/cart')}>Ir al carrito</Button> 
         <Button variant="outlined"onClick={()=>navigate('/')}>Seguir comprando</Button> 
-      </Box>: <ItemCount stock={stock} initial={1} onAdd={onAdd} contador={contador} setContador={setContador}/>}
+      </Box>: <ItemCount stock={stock} initial={1} onAdd={onAdd} contador={contador} setContador={setContador}/>} 
+        </Box>
+      </Box>:
+      <Loader/>
+      }
       <ToastContainer />
     </Box>
   )

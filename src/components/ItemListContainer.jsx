@@ -49,7 +49,7 @@ export default function ItemListContainer() {
     }, [categoriaId])
 
   return (
-      <Box className="prueba">
+      <Box>
         <Box className="titlesPages">
           {categoriaId ? <h1>{categoriaId}</h1> : <h1>Now Playing</h1>}
           <ArrowDownwardIcon fontSize="inherit"/>

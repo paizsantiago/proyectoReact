@@ -1,18 +1,33 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
+const moviesLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]');
+const contadorStorage = parseInt(localStorage.getItem('contador' || 0));
 
 
 export const CartContext = createContext();
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([]);
-    const [contadorCarrito, setContadorCarrito] = useState(0);
+
+    const [cart, setCart] = useState(moviesLocalStorage);
+    const [contadorCarrito, setContadorCarrito] = useState(contadorStorage);
+
+
+    useEffect(()=>{
+        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('contador', contadorCarrito);
+    }, [cart, contadorCarrito])
+
 
     const addItem = (item) =>{
         const existInCart = cart.some((movie) => movie.id === item.id)
         if(existInCart){
             const newCart = cart.map((movie) =>{
                 if(movie.id === item.id){
-                    return {...movie, quantity: movie.quantity+ item.quantity}
+                    if(movie.quantity === movie.stock){
+                        return movie
+                    }else{
+                        return {...movie, quantity: movie.quantity + item.quantity}
+                    }
                 }else{
                     return movie;
                 }
@@ -22,12 +37,11 @@ export const CartProvider = ({children}) => {
             setCart([...cart, item]);
         }
         setContadorCarrito(contadorCarrito+item.quantity);
-    }       
+    }      
     
     const removeItem = (itemId, quantity) =>{
-            setCart(cart.filter((item) => item.id !== itemId))
+            setCart(cart.filter((item) => item.id !== itemId));
             setContadorCarrito(contadorCarrito - quantity);
-        
     }
     
     const clear = () => {
@@ -36,7 +50,18 @@ export const CartProvider = ({children}) => {
     }
     
     const isInCart = (id) =>{
-        return cart.some((item) => item.id === id);
+        const existInCart = cart.some((item) => item.id === id);
+        if (existInCart) {
+           for (const movie of cart) {
+                if(movie.id === id){
+                    if(movie.stock <= movie.quantity){
+                        return true;
+                    }
+                }
+           }
+        }else{
+            return false;
+        }
     }
 
     const cartTotal = () =>{

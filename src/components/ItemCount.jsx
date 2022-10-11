@@ -1,4 +1,5 @@
 import { Box, Button } from "@mui/material";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 
 export default function ItemCount({stock, initial, onAdd, contador, setContador}) {
@@ -21,7 +22,7 @@ export default function ItemCount({stock, initial, onAdd, contador, setContador}
         <Button className="botonAgregar" variant="contained" onClick={() =>{
             onAdd();
             setContador(initial);
-        }}>Agregar al carrito</Button>
+        }}><AddShoppingCartIcon sx={{padding: ".6rem"}}/>Add to cart</Button>
     </Box>
   )
 }
