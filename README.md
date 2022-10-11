@@ -69,9 +69,15 @@ Spinners de carga cuando se hace el llamado a firebase.
 
 ## Navegacion
 
-
+Busqueda y compra de productos:
 
 https://user-images.githubusercontent.com/90289434/195169423-d041943d-81dc-49bd-a04b-c0334cfb0f94.mp4
+
+
+
+
+https://user-images.githubusercontent.com/90289434/195169959-e5b35f3d-9067-4795-a153-2fcfc3011922.mp4
+
 
 
 
